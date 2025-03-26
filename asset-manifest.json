@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/vcorr/vcorr-periodictablememgame/static/css/main.3ce5b6cc.css",
-    "main.js": "/vcorr/vcorr-periodictablememgame/static/js/main.8eab570f.js",
-    "static/js/453.b50b0fbe.chunk.js": "/vcorr/vcorr-periodictablememgame/static/js/453.b50b0fbe.chunk.js",
-    "index.html": "/vcorr/vcorr-periodictablememgame/index.html",
-    "main.3ce5b6cc.css.map": "/vcorr/vcorr-periodictablememgame/static/css/main.3ce5b6cc.css.map",
-    "main.8eab570f.js.map": "/vcorr/vcorr-periodictablememgame/static/js/main.8eab570f.js.map",
-    "453.b50b0fbe.chunk.js.map": "/vcorr/vcorr-periodictablememgame/static/js/453.b50b0fbe.chunk.js.map"
+    "main.css": "/vcor-periodictablememgame/static/css/main.3ce5b6cc.css",
+    "main.js": "/vcor-periodictablememgame/static/js/main.e511e325.js",
+    "static/js/453.b50b0fbe.chunk.js": "/vcor-periodictablememgame/static/js/453.b50b0fbe.chunk.js",
+    "index.html": "/vcor-periodictablememgame/index.html",
+    "main.3ce5b6cc.css.map": "/vcor-periodictablememgame/static/css/main.3ce5b6cc.css.map",
+    "main.e511e325.js.map": "/vcor-periodictablememgame/static/js/main.e511e325.js.map",
+    "453.b50b0fbe.chunk.js.map": "/vcor-periodictablememgame/static/js/453.b50b0fbe.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3ce5b6cc.css",
-    "static/js/main.8eab570f.js"
+    "static/js/main.e511e325.js"
   ]
 }
