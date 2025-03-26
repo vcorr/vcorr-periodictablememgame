@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/vcorr-periodictablememgame/static/css/main.3ce5b6cc.css",
-    "main.js": "/vcorr-periodictablememgame/static/js/main.e8818752.js",
+    "main.js": "/vcorr-periodictablememgame/static/js/main.08f47e83.js",
     "static/js/453.b50b0fbe.chunk.js": "/vcorr-periodictablememgame/static/js/453.b50b0fbe.chunk.js",
     "index.html": "/vcorr-periodictablememgame/index.html",
     "main.3ce5b6cc.css.map": "/vcorr-periodictablememgame/static/css/main.3ce5b6cc.css.map",
-    "main.e8818752.js.map": "/vcorr-periodictablememgame/static/js/main.e8818752.js.map",
+    "main.08f47e83.js.map": "/vcorr-periodictablememgame/static/js/main.08f47e83.js.map",
     "453.b50b0fbe.chunk.js.map": "/vcorr-periodictablememgame/static/js/453.b50b0fbe.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3ce5b6cc.css",
-    "static/js/main.e8818752.js"
+    "static/js/main.08f47e83.js"
   ]
 }
