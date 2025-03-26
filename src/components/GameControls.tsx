@@ -14,7 +14,9 @@ interface GameControlsProps {
 const GameControls: React.FC<GameControlsProps> = ({ onStart, gameCards, rangeStart, rangeEnd, setRangeStart, setRangeEnd }) => {
   return (
     <div className="game-controls">
-      <h1>Elements Game</h1>
+      <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+        <h1>Game Name</h1>
+      </div>
       <div className="range-inputs">
         <input
           type="number"
