@@ -36,3 +36,24 @@
     transform: rotate(360deg);
   }
 }
+
+/* New layout styles for positioning the periodic table on the left and a sidebar on the right */
+.app-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 20px;
+}
+
+.table-container {
+  flex: 3;
+  margin-right: 20px;
+}
+
+.sidebar-container {
+  flex: 1;
+  background: #f5f5f5; /* light grey background for visibility */
+  padding: 20px;
+  min-height: 200px;
+  border: 1px dashed #ccc;
+}

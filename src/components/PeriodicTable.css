@@ -1,0 +1,127 @@
+/* src/components/PeriodicTable.css */
+
+.periodic-table {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+  font-family: sans-serif;
+}
+
+.period {
+  display: grid;
+  grid-template-columns: repeat(18, 50px);
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.element-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 60px;
+  border: 1px solid #ccc;
+  background: #fff;
+  border-radius: 4px;
+  color: #000 !important;
+}
+
+.empty-card {
+  width: 50px;
+  height: 60px;
+}
+
+.atomic-number {
+  font-size: 10px;
+  font-weight: bold;
+  color: #000 !important;
+}
+
+.symbol {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000 !important;
+}
+
+.name {
+  font-size: 8px;
+  color: #000 !important;
+}
+
+.additional-rows {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.additional-rows h3 {
+  margin: 10px 0 5px;
+  text-align: center;
+  color: #000;
+}
+
+.lanthanides, .actinides {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lanthanides .period, .actinides .period {
+  grid-template-columns: repeat(18, 50px);
+}
+
+/* Group based colors */
+.element-card.alkali-metals {
+  background: #FFEBEE;
+}
+.element-card.alkaline-earth-metals {
+  background: #FFF3E0;
+}
+.element-card.noble-gases {
+  background: #E0F7FA;
+}
+.element-card.halogens {
+  background: #E8EAF6;
+}
+.element-card.metalloids {
+  background: #E8F5E9;
+}
+.element-card.nonmetals {
+  background: #F3E5F5;
+}
+.element-card.transition-metals {
+  background: #E3F2FD;
+}
+.element-card.lanthanides {
+  background: #FFFDE7;
+}
+.element-card.actinides {
+  background: #FCE4EC;
+}
+
+/* New styles for flipped/empty cells */
+.cell-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.question-mark {
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+}
+
+/* Ensure missing cards have a white background */
+.element-card.missing {
+  background: #fff !important;
+}
+
+/* Add dim style to non-active elements */
+.dim {
+  opacity: 0.5;
+  filter: grayscale(100%);
+} 
