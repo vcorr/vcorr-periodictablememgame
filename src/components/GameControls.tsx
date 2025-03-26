@@ -14,24 +14,72 @@ interface GameControlsProps {
 const GameControls: React.FC<GameControlsProps> = ({ onStart, gameCards, rangeStart, rangeEnd, setRangeStart, setRangeEnd }) => {
   return (
     <div className="game-controls">
-      <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-        <h1>Game Name</h1>
+      <div className="range-inputs" style={{ 
+        display: 'flex', 
+        flexDirection: 'column', 
+        gap: '15px', 
+        marginBottom: '30px',
+        padding: '20px',
+        background: 'white',
+        borderRadius: '12px',
+        boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+      }}>
+        <label style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <span style={{ 
+            minWidth: '100px', 
+            fontSize: '18px', 
+            color: '#333' 
+          }}>Start from:</span>
+          <input
+            type="number"
+            value={rangeStart}
+            onChange={(e) => setRangeStart(e.target.value)}
+            style={{ 
+              padding: '8px 12px',
+              borderRadius: '6px',
+              border: '1px solid #ddd',
+              fontSize: '16px',
+              width: '100px',
+              outline: 'none'
+            }}
+          />
+        </label>
+        <label style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <span style={{ 
+            minWidth: '100px', 
+            fontSize: '18px', 
+            color: '#333' 
+          }}>End at:</span>
+          <input
+            type="number"
+            value={rangeEnd}
+            onChange={(e) => setRangeEnd(e.target.value)}
+            style={{ 
+              padding: '8px 12px',
+              borderRadius: '6px',
+              border: '1px solid #ddd',
+              fontSize: '16px',
+              width: '100px',
+              outline: 'none'
+            }}
+          />
+        </label>
       </div>
-      <div className="range-inputs">
-        <input
-          type="number"
-          placeholder="Start atomic number"
-          value={rangeStart}
-          onChange={(e) => setRangeStart(e.target.value)}
-        />
-        <input
-          type="number"
-          placeholder="End atomic number"
-          value={rangeEnd}
-          onChange={(e) => setRangeEnd(e.target.value)}
-        />
-      </div>
-      <button className="start-button" onClick={onStart}>Start</button>
+      <button 
+        className="start-button" 
+        onClick={onStart}
+        style={{
+          padding: '12px 40px',
+          fontSize: '18px',
+          borderRadius: '8px',
+          border: 'none',
+          background: '#4CAF50',
+          color: 'white',
+          cursor: 'pointer',
+          transition: 'background 0.2s',
+          marginBottom: '30px'
+        }}
+      >Start</button>
       <div className="game-cards-container">
         {gameCards.map(card => (
           <div

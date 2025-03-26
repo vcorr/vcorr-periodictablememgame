@@ -66,6 +66,9 @@ function App() {
 
   return (
     <div className="App">
+      <header style={{ textAlign: 'center', marginBottom: '20px' }}>
+        <h1>Elements Game</h1>
+      </header>
       <div className="app-container">
         <div className="table-container">
           <PeriodicTable
