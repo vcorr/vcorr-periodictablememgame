@@ -3,6 +3,7 @@ import { periodicTableMain, lanthanides, actinides, ElementData } from '../data/
 import './PeriodicTable.css';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useTranslation } from '../i18n/TranslationContext';
 
 interface PeriodicTableProps {
   placedElements: number[];
@@ -45,6 +46,7 @@ function getElementsInRange(start: number, end: number): ElementData[] {
 }
 
 const PeriodicTable: React.FC<PeriodicTableProps> = ({ placedElements, onDrop, missingElements, rangeStart, rangeEnd }) => {
+  const { t } = useTranslation();
   const effectiveMissing = (rangeStart !== '' && rangeEnd !== '')
     ? missingElements.filter(num => num >= Number(rangeStart) && num <= Number(rangeEnd))
     : missingElements;
@@ -58,190 +60,76 @@ const PeriodicTable: React.FC<PeriodicTableProps> = ({ placedElements, onDrop, m
     }
   }, [placedElements, effectiveMissing]);
 
+  const renderElement = (elem: ElementData | null, index: number) => {
+    if (!elem) return <div key={index} className="empty-card" />;
+
+    const isMissing = effectiveMissing.includes(elem.atomicNumber);
+    const isPlaced = placedElements.includes(elem.atomicNumber);
+    const inRange = isInRange(elem, rangeStart, rangeEnd);
+
+    if (isMissing && !isPlaced) {
+      if (inRange) {
+        return (
+          <div
+            key={index}
+            className={`element-card missing ${getCategory(elem)}`}
+            onDragOver={(e) => e.preventDefault()}
+            onDrop={(e) => {
+              e.preventDefault();
+              const draggedAtomic = Number(e.dataTransfer.getData('text/plain'));
+              if (draggedAtomic !== elem.atomicNumber) {
+                toast.error(t('tryAgain'), {
+                  autoClose: 2000,
+                  position: 'top-center'
+                });
+              }
+              onDrop(draggedAtomic, elem.atomicNumber);
+            }}
+          >
+            <div className="cell-content">
+              <span className="question-mark">?</span>
+            </div>
+          </div>
+        );
+      } else {
+        return (
+          <div key={index} className={`element-card missing ${getCategory(elem)} dim`}>
+            <div className="cell-content">
+              <span className="question-mark">?</span>
+            </div>
+          </div>
+        );
+      }
+    }
+
+    return (
+      <div key={index} className={`element-card ${getCategory(elem)} ${inRange ? '' : 'dim'}`}>
+        <div className="atomic-number">{elem.atomicNumber}</div>
+        <div className="symbol">{elem.symbol}</div>
+        <div className="name">{t(elem.name, 'elements')}</div>
+      </div>
+    );
+  };
+
   return (
     <div className="periodic-table-container">
       <div className="periodic-table">
         {periodicTableMain.map((period, periodIndex) => (
           <div key={periodIndex} className="period">
-            {period.map((elem, index) => {
-              if (!elem) return <div key={index} className="empty-card" />;
-              const isMissing = effectiveMissing.includes(elem.atomicNumber);
-              const isPlaced = placedElements.includes(elem.atomicNumber);
-              const inRange = isInRange(elem, rangeStart, rangeEnd);
-              if (isMissing && !isPlaced) {
-                if (inRange) {
-                  return (
-                    <div
-                      key={index}
-                      className={`element-card missing ${getCategory(elem)}`}
-                      onDragOver={(e) => e.preventDefault()}
-                      onDrop={(e) => {
-                        e.persist();
-                        e.preventDefault();
-                        let targetEl = e.currentTarget as HTMLElement | null;
-                        if (!targetEl && e.target instanceof HTMLElement) {
-                          targetEl = e.target.closest('.element-card') as HTMLElement | null;
-                        }
-                        const draggedAtomic = Number(e.dataTransfer.getData('text/plain'));
-                        if (targetEl && draggedAtomic !== elem.atomicNumber) {
-                          toast.error("Try again!", {
-                            autoClose: 2000,
-                            position: 'top-center'
-                          });
-                        }
-                        onDrop(draggedAtomic, elem.atomicNumber);
-                      }}
-                    >
-                      <div className="cell-content">
-                        <span className="question-mark">?</span>
-                      </div>
-                    </div>
-                  );
-                } else {
-                  return (
-                    <div
-                      key={index}
-                      className={`element-card missing ${getCategory(elem)} dim`}
-                    >
-                      <div className="cell-content">
-                        <span className="question-mark">?</span>
-                      </div>
-                    </div>
-                  );
-                }
-              } else {
-                return (
-                  <div key={index} className={`element-card ${getCategory(elem)} ${inRange ? '' : 'dim'}`}> 
-                    <div className="atomic-number">{elem.atomicNumber}</div>
-                    <div className="symbol">{elem.symbol}</div>
-                    <div className="name">{elem.name}</div>
-                  </div>
-                );
-              }
-            })}
+            {period.map((elem, index) => renderElement(elem, index))}
           </div>
         ))}
         <div className="additional-rows">
           <div className="lanthanides">
-            <h3>Lanthanides</h3>
+            <h3>{t('lanthanides')}</h3>
             <div className="period">
-              {lanthanides.map((elem, idx) => {
-                if (!elem) return <div key={idx} className="empty-card" />;
-                const isMissing = effectiveMissing.includes(elem.atomicNumber);
-                const isPlaced = placedElements.includes(elem.atomicNumber);
-                const inRange = isInRange(elem, rangeStart, rangeEnd);
-                if (isMissing && !isPlaced) {
-                  if (inRange) {
-                    return (
-                      <div
-                        key={idx}
-                        className={`element-card missing ${getCategory(elem)}`}
-                        onDragOver={(e) => e.preventDefault()}
-                        onDrop={(e) => {
-                          e.persist();
-                          e.preventDefault();
-                          let targetEl = e.currentTarget as HTMLElement | null;
-                          if (!targetEl && e.target instanceof HTMLElement) {
-                            targetEl = e.target.closest('.element-card') as HTMLElement | null;
-                          }
-                          const draggedAtomic = Number(e.dataTransfer.getData('text/plain'));
-                          if (targetEl && draggedAtomic !== elem.atomicNumber) {
-                            toast.error("Try again!", {
-                              autoClose: 2000,
-                              position: 'top-center'
-                            });
-                          }
-                          onDrop(draggedAtomic, elem.atomicNumber);
-                        }}
-                      >
-                        <div className="cell-content">
-                          <span className="question-mark">?</span>
-                        </div>
-                      </div>
-                    );
-                  } else {
-                    return (
-                      <div
-                        key={idx}
-                        className={`element-card missing ${getCategory(elem)} dim`}
-                      >
-                        <div className="cell-content">
-                          <span className="question-mark">?</span>
-                        </div>
-                      </div>
-                    );
-                  }
-                } else {
-                  return (
-                    <div key={idx} className={`element-card ${getCategory(elem)} ${inRange ? '' : 'dim'}`}> 
-                      <div className="atomic-number">{elem.atomicNumber}</div>
-                      <div className="symbol">{elem.symbol}</div>
-                      <div className="name">{elem.name}</div>
-                    </div>
-                  );
-                }
-              })}
+              {lanthanides.map((elem, idx) => renderElement(elem, idx))}
             </div>
           </div>
           <div className="actinides">
-            <h3>Actinides</h3>
+            <h3>{t('actinides')}</h3>
             <div className="period">
-              {actinides.map((elem, idx) => {
-                if (!elem) return <div key={idx} className="empty-card" />;
-                const isMissing = effectiveMissing.includes(elem.atomicNumber);
-                const isPlaced = placedElements.includes(elem.atomicNumber);
-                const inRange = isInRange(elem, rangeStart, rangeEnd);
-                if (isMissing && !isPlaced) {
-                  if (inRange) {
-                    return (
-                      <div
-                        key={idx}
-                        className={`element-card missing ${getCategory(elem)}`}
-                        onDragOver={(e) => e.preventDefault()}
-                        onDrop={(e) => {
-                          e.persist();
-                          e.preventDefault();
-                          let targetEl = e.currentTarget as HTMLElement | null;
-                          if (!targetEl && e.target instanceof HTMLElement) {
-                            targetEl = e.target.closest('.element-card') as HTMLElement | null;
-                          }
-                          const draggedAtomic = Number(e.dataTransfer.getData('text/plain'));
-                          if (targetEl && draggedAtomic !== elem.atomicNumber) {
-                            toast.error("Try again!", {
-                              autoClose: 2000,
-                              position: 'top-center'
-                            });
-                          }
-                          onDrop(draggedAtomic, elem.atomicNumber);
-                        }}
-                      >
-                        <div className="cell-content">
-                          <span className="question-mark">?</span>
-                        </div>
-                      </div>
-                    );
-                  } else {
-                    return (
-                      <div
-                        key={idx}
-                        className={`element-card missing ${getCategory(elem)} dim`}
-                      >
-                        <div className="cell-content">
-                          <span className="question-mark">?</span>
-                        </div>
-                      </div>
-                    );
-                  }
-                } else {
-                  return (
-                    <div key={idx} className={`element-card ${getCategory(elem)} ${inRange ? '' : 'dim'}`}> 
-                      <div className="atomic-number">{elem.atomicNumber}</div>
-                      <div className="symbol">{elem.symbol}</div>
-                      <div className="name">{elem.name}</div>
-                    </div>
-                  );
-                }
-              })}
+              {actinides.map((elem, idx) => renderElement(elem, idx))}
             </div>
           </div>
         </div>
