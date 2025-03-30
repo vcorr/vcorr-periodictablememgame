@@ -1,12 +1,16 @@
 // src/data/elements.ts
 
+import { BaseElementData } from '../types/elementTypes';
+
+export type { BaseElementData };
+
 export interface ElementData {
   atomicNumber: number;
   symbol: string;
   name: string;
 }
 
-export const periodicTableMain: (ElementData | null)[][] = [
+export const periodicTableMain: (BaseElementData | null)[][] = [
   // Period 1
   [
     { atomicNumber: 1, symbol: 'H', name: 'Hydrogen' },

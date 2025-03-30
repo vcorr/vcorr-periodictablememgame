@@ -1,5 +1,5 @@
-import { ElementData as BaseElementData } from '../data/elements';
-import { ElementData } from '../types';
+import { BaseElementData, ElementData, ElementCategory, ElementPhase, ElementBlock } from '../types/elementTypes';
+import { isElementCategory, isElementPhase, isElementBlock } from '../types/elementTypes';
 import tableData from '../data/table.json';
 
 interface TableElement {
@@ -27,10 +27,10 @@ function initializeElementDetails() {
   elements.forEach((element) => {
     elementDetails.set(element.number, {
       atomicMass: element.atomic_mass,
-      category: element.category || 'unknown',
-      block: element.block || 'unknown',
+      category: isElementCategory(element.category) ? element.category : 'unknown',
+      block: isElementBlock(element.block) ? element.block : 'unknown',
       electron_configuration_semantic: element.electron_configuration_semantic || 'unknown',
-      phase: element.phase || 'unknown',
+      phase: isElementPhase(element.phase) ? element.phase : 'Unknown',
       density: element.density || 0,
       boil: element.boil || 0,
       melt: element.melt || 0,
@@ -52,13 +52,14 @@ export function enrichElementData(baseElement: BaseElementData): ElementData {
       category: 'unknown',
       block: 'unknown',
       electron_configuration_semantic: 'unknown',
-      phase: 'unknown',
+      phase: 'Unknown',
       density: 0,
       boil: 0,
       melt: 0,
       source: ''
     };
   }
+
   return {
     ...baseElement,
     ...details
