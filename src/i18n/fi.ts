@@ -8,12 +8,43 @@ export const fi: Translations = {
     tryAgain: "Yritä uudelleen!",
     lanthanides: "Lantanidit",
     actinides: "Aktinidit",
-    language: "Kieli"
+    language: "Kieli",
+    score: "Pisteet",
+    pointsEarned: "Pisteet ansaittu: +10",
+    pointsLost: "Pisteitä vähennetty: -5",
+    correctPlacement: "Oikea sijainti!",
+    phase: "Olomuoto",
+    meltingPoint: "Sulamispiste",
+    boilingPoint: "Kiehumispiste",
+    atomicMass: "Atomipaino",
+    category: "Luokka",
+    density: "Tiheys",
+    clickForDetails: "Klikkaa alkuainekorttia nähdäksesi tiedot"
   },
   ranges: {
     allElements: "Kaikki alkuaineet",
     hydrogenToCopper: "Vedystä kupariin",
     aluminumToGold: "Alumiinista kultaan",
+  },
+  categories: {
+    "metal": "metalli",
+    "metalloid": "puolimetalli",
+    "nonmetal": "epämetalli",
+    "noble gas": "jalokaasu",
+    "alkali metal": "alkalimetalli",
+    "alkaline earth metal": "maa-alkalimetalli",
+    "transition metal": "siirtymämetalli",
+    "post-transition metal": "post-siirtymämetalli",
+    "polyatomic nonmetal": "polyatominen epämetalli",
+    "diatomic nonmetal": "diatominen epämetalli",
+    "lanthanide": "lantanidi",
+    "actinide": "aktinidi"
+  },
+  phases: {
+    "Solid": "Kiinteä",
+    "Liquid": "Neste",
+    "Gas": "Kaasu",
+    "Plasma": "Plasma"
   },
   elements: {
     "Hydrogen": "Vety",

@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { periodicTableMain, lanthanides, actinides, ElementData } from '../data/elements';
 import './PeriodicTable.css';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { useTranslation } from '../i18n/TranslationContext';
 
 interface PeriodicTableProps {
@@ -53,10 +51,7 @@ const PeriodicTable: React.FC<PeriodicTableProps> = ({ placedElements, onDrop, m
 
   useEffect(() => {
     if (placedElements.length === effectiveMissing.length && effectiveMissing.length > 0) {
-      toast.success("You win!", {
-        autoClose: 3000,
-        position: 'top-center'
-      });
+      // Removed toast from here since it's handled in App.tsx
     }
   }, [placedElements, effectiveMissing]);
 
@@ -77,12 +72,6 @@ const PeriodicTable: React.FC<PeriodicTableProps> = ({ placedElements, onDrop, m
             onDrop={(e) => {
               e.preventDefault();
               const draggedAtomic = Number(e.dataTransfer.getData('text/plain'));
-              if (draggedAtomic !== elem.atomicNumber) {
-                toast.error(t('tryAgain'), {
-                  autoClose: 2000,
-                  position: 'top-center'
-                });
-              }
               onDrop(draggedAtomic, elem.atomicNumber);
             }}
           >
@@ -134,7 +123,6 @@ const PeriodicTable: React.FC<PeriodicTableProps> = ({ placedElements, onDrop, m
           </div>
         </div>
       </div>
-      <ToastContainer />
     </div>
   );
 };

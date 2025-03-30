@@ -122,6 +122,6 @@
 
 /* Add dim style to non-active elements */
 .dim {
-  opacity: 0.5;
-  filter: grayscale(100%);
+  opacity: 0.3;
+  filter: grayscale(100%) blur(1px);
 } 

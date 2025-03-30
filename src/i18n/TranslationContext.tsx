@@ -17,7 +17,7 @@ const translations: Record<Language, Translations> = {
 export const TranslationContext = createContext<TranslationContextType | null>(null);
 
 export const TranslationProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [language, setLanguage] = useState<Language>('en');
+  const [language, setLanguage] = useState<Language>('fi');
 
   const t = (key: string, section: TranslationSection = 'ui'): string => {
     const sectionTranslations = translations[language][section];

@@ -120,3 +120,48 @@ h1 {
 .language-selector:hover {
   border-color: #4ade80;
 }
+
+.score-section {
+  padding: 12px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.score-title {
+  font-size: 14px;
+  color: #64748b;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.score-value {
+  font-size: 24px;
+  color: #1a202c;
+  font-weight: 700;
+}
+
+/* Toast customization */
+.Toastify__toast {
+  background: white !important;
+  color: #1a202c !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  font-size: 13px !important;
+  padding: 8px 12px !important;
+  margin: 4px !important;
+}
+
+.Toastify__toast--success {
+  border-color: #4ade80 !important;
+}
+
+.Toastify__toast--error {
+  border-color: #ef4444 !important;
+}
+
+.Toastify__toast-container {
+  position: fixed !important;
+  bottom: 16px !important;
+  right: 16px !important;
+  z-index: 1000 !important;
+}

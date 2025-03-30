@@ -8,12 +8,43 @@ export const en: Translations = {
     tryAgain: "Try again!",
     lanthanides: "Lanthanides",
     actinides: "Actinides",
-    language: "Language"
+    language: "Language",
+    score: "Score",
+    pointsEarned: "Points earned: +10",
+    pointsLost: "Points lost: -5",
+    correctPlacement: "Correct placement!",
+    phase: "Phase",
+    meltingPoint: "Melting Point",
+    boilingPoint: "Boiling Point",
+    atomicMass: "Atomic Mass",
+    category: "Category",
+    density: "Density",
+    clickForDetails: "Click on an element card to see details"
   },
   ranges: {
     allElements: "All Elements",
     hydrogenToCopper: "Hydrogen to Copper",
     aluminumToGold: "Aluminum to Gold",
+  },
+  categories: {
+    "metal": "metal",
+    "metalloid": "metalloid",
+    "nonmetal": "nonmetal",
+    "noble gas": "noble gas",
+    "alkali metal": "alkali metal",
+    "alkaline earth metal": "alkaline earth metal",
+    "transition metal": "transition metal",
+    "post-transition metal": "post-transition metal",
+    "polyatomic nonmetal": "polyatomic nonmetal",
+    "diatomic nonmetal": "diatomic nonmetal",
+    "lanthanide": "lanthanide",
+    "actinide": "actinide"
+  },
+  phases: {
+    "Solid": "Solid",
+    "Liquid": "Liquid",
+    "Gas": "Gas",
+    "Plasma": "Plasma"
   },
   elements: {
     "Hydrogen": "Hydrogen",
