@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/vcorr-periodictablememgame/static/css/main.3ce5b6cc.css",
-    "main.js": "/vcorr-periodictablememgame/static/js/main.08f47e83.js",
+    "main.css": "/vcorr-periodictablememgame/static/css/main.9cd55f57.css",
+    "main.js": "/vcorr-periodictablememgame/static/js/main.29d4ff8e.js",
     "static/js/453.b50b0fbe.chunk.js": "/vcorr-periodictablememgame/static/js/453.b50b0fbe.chunk.js",
     "index.html": "/vcorr-periodictablememgame/index.html",
-    "main.3ce5b6cc.css.map": "/vcorr-periodictablememgame/static/css/main.3ce5b6cc.css.map",
-    "main.08f47e83.js.map": "/vcorr-periodictablememgame/static/js/main.08f47e83.js.map",
+    "main.9cd55f57.css.map": "/vcorr-periodictablememgame/static/css/main.9cd55f57.css.map",
+    "main.29d4ff8e.js.map": "/vcorr-periodictablememgame/static/js/main.29d4ff8e.js.map",
     "453.b50b0fbe.chunk.js.map": "/vcorr-periodictablememgame/static/js/453.b50b0fbe.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3ce5b6cc.css",
-    "static/js/main.08f47e83.js"
+    "static/css/main.9cd55f57.css",
+    "static/js/main.29d4ff8e.js"
   ]
 }
